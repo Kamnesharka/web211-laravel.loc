@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
         <div class="container">
-          <a class="navbar-brand" href="{{ route("app.main") }}">{{ config("app.name") }}</a>
+          <a class="navbar-brand" href="{{ route('app.main') }}">{{ config("app.name") }}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -16,8 +16,13 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="{{route("categories.list")}}">
+                    <a class="dropdown-item" href="{{route('categories.list')}}">
                         Категории
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{route('articles.index')}}">
+                        Новости
                     </a>
                 </li>
                 </ul>

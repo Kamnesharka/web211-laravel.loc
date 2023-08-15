@@ -21,9 +21,12 @@
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-warning">Ред.</a>
-                            <a href="#" class="btn btn-sm btn-danger">Удалить</a>
+                        <td class="d-flex">
+                            <a href="{{route ('categories.edit', $category->id)}}" class="btn btn-sm btn-warning">Ред.</a>
+                            <form action="{{route ('categories.delete', $category->id)}}" method="POST" class="mx-3">
+                                @csrf @method("DELETE")
+                                <button class="btn btn-sm btn-danger">Удалить</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
