@@ -41,6 +41,12 @@
         <div class="form-group mb-3">
             <label for="image" class="form-label">Изображение</label>
             <input type="file" id="image" name="image" class="form-control">
+            @if ($article->image)
+                <div class="my-3">
+                    <img src="{{$article->getImage()}}" alt="" style="width:150px" >
+                </div>
+                <a href="{{route('articles.remove-image', $article->id)}}" class="btn btn-sm btn-danger">Удалить картинку</a>
+            @endif
         </div>
         <div class="form-chesk mb-3">
             <input type="checkbox" id="is_published" name="is_published" class="form-check-input" value="1" @if (old('is_published', $article->is_published) == 1) checked @endif>

@@ -26,7 +26,9 @@ class ArticleController extends Controller
             'category' => ['required']
         ]);
 
-        Article::add($request->all());
+        $article = Article::add($request->all());
+        $article->uploadImage($request->file('image'));
+
         return redirect()->route('articles.index');
     } 
 
@@ -51,7 +53,9 @@ class ArticleController extends Controller
             'is_published' => $request->input('is_published')
             
         ]);
-        return redirect()->route('articles.index');
+        $article->uploadImage($request->file('image'));
+
+        return redirect()->route('articles.index')->with('success', 'Новость успешно обновлена!');
     }
 
     public function delete($articleId) {
@@ -63,5 +67,10 @@ class ArticleController extends Controller
         return view("articles.show-article", [
             'article' => Article::where("slug", $articleSlug)->first()
         ]);
+    }
+
+    public function removeImage($articleId) {
+        Article::find($articleId)->removeImage();
+        return back();
     }
 }

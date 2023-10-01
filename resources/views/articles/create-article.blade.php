@@ -12,7 +12,7 @@
     <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data" class="form-select">
         @csrf
         <div class="form-group mb-3">
-            <label for="title" class="form-label">Заголовок</label>
+            <label for="title" class="form-label">Название</label>
             <input type="text" id="title" name="title" class="form-control" value="{{old('title')}}">
             @error('title')
                 <small class="text-danger">{{$message}}</small>

@@ -6,6 +6,12 @@
         <h2>Новости</h2>
         <a href="{{route('articles.create')}}" class="btn btn-primary">Добавить</a>
     </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
     <div>
         @if ($articles->count())
@@ -13,7 +19,7 @@
             <thead>
                 <tr>
                     <th>Изображение</th>
-                    <th>Заголовок</th>
+                    <th>Название</th>
                     <th>Категория</th>
                     <th>Опубликовано</th>
                     <th>Действия</th>
@@ -22,7 +28,9 @@
             <tbody>
                 @foreach ($articles as $article)
                     <tr>
-                        <td>#</td>
+                        <td>
+                            <img src="{{$article->getImage()}}" alt="" style="height:100px">
+                        </td>
                         <td>
                             <a href="{{route('articles.show', $article->slug)}}">{{$article->title}}</a>
                         </td>
@@ -41,7 +49,7 @@
         </table>
         @else
             <p class="my-4">
-                Пока что нет ни одной новости!
+                Еще нет ни одной новости!
             </p>
         @endif
     </div>
